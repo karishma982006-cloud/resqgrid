@@ -18,6 +18,7 @@ import {
   ChevronUp,
   Activity,
   Image,
+  Camera,
   Layers,
   ArrowRight
 } from 'lucide-react';
@@ -196,6 +197,20 @@ export const CaseTracking = () => {
           <span className="font-semibold text-slate-900 block mb-0.5">Your Incident Report:</span>
           "{caseData.description}"
         </div>
+
+        {caseData.imageUrl && (
+          <div className="mt-3 p-3 bg-slate-50 border border-slate-200 rounded">
+            <span className="text-xs font-semibold text-slate-800 flex items-center gap-1.5 mb-2">
+              <Camera className="w-3.5 h-3.5 text-blue-600" /> Attached Incident Photo:
+            </span>
+            <img
+              src={caseData.imageUrl}
+              alt="Incident photo"
+              className="max-h-60 rounded border border-slate-300 object-cover shadow-2xs cursor-pointer hover:opacity-95"
+              onClick={() => window.open(caseData.imageUrl, '_blank')}
+            />
+          </div>
+        )}
       </div>
 
       {/* Citizen Verification Card (Prompt Requirement 39) */}
@@ -370,17 +385,32 @@ export const CaseTracking = () => {
 
                 {/* Evidence Attachment Proof (If uploaded) */}
                 {task.evidence && task.evidence.length > 0 && (
-                  <div className="mb-3 p-2.5 bg-emerald-50 border border-emerald-200 rounded text-xs text-emerald-900 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Image className="w-4 h-4 text-emerald-700" />
-                      <span>
-                        <strong>Work Completion Proof Attached: </strong>
-                        {task.evidence[0].notes || 'Photo verified by field engineer'}
+                  <div className="mb-3 p-3 bg-emerald-50 border border-emerald-200 rounded text-xs text-emerald-900">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Image className="w-4 h-4 text-emerald-700" />
+                        <span>
+                          <strong>Work Completion Proof Attached: </strong>
+                          {task.evidence[0].notes || 'Photo verified by field engineer'}
+                        </span>
+                      </div>
+                      <span className="text-[10px] font-mono text-emerald-700 bg-white px-2 py-0.5 rounded border border-emerald-300">
+                        Verified
                       </span>
                     </div>
-                    <span className="text-[10px] font-mono text-emerald-700 bg-white px-2 py-0.5 rounded border border-emerald-300">
-                      Verified
-                    </span>
+                    {task.evidence[0].url && (
+                      <div className="mt-2.5">
+                        <img
+                          src={task.evidence[0].url}
+                          alt="Work completion proof"
+                          className="max-h-52 rounded border border-emerald-300 object-cover shadow-2xs cursor-pointer hover:opacity-95"
+                          onClick={() => window.open(task.evidence[0].url, '_blank')}
+                        />
+                        <div className="text-[10px] text-emerald-700 mt-1">
+                          Uploaded by {task.evidence[0].uploadedBy || 'Crew'} on {new Date(task.evidence[0].uploadedAt).toLocaleString()}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
 

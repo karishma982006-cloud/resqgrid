@@ -127,6 +127,7 @@ export const analyzeAndCreateCase = async (req, res, next) => {
       citizenPhone: report.citizenPhone,
       location: report.location,
       description: report.description,
+      imageUrl: report.imageUrl || null,
       mode,
       disasterEventId: report.disasterEventId || null,
       severity: highestSeverity,
@@ -246,6 +247,13 @@ export const getCaseById = async (req, res, next) => {
     let caseItem = await Case.findOne({ $or: [{ _id: id }, { caseId: id }] });
     if (!caseItem) {
       return res.status(404).json({ success: false, message: 'Case not found.' });
+    }
+
+    if (!caseItem.imageUrl && caseItem.reportId) {
+      const rep = await Report.findById(caseItem.reportId);
+      if (rep && rep.imageUrl) {
+        caseItem = { ...caseItem, imageUrl: rep.imageUrl };
+      }
     }
 
     const problems = await Problem.find({ caseId: caseItem.caseId });
