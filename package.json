@@ -1,0 +1,25 @@
+{
+  "name": "resqgrid",
+  "version": "1.0.0",
+  "description": "RESQ-GRID — Unified Public Service & Multi-Agency Disaster Coordination Engine",
+  "main": "backend/server.js",
+  "type": "module",
+  "scripts": {
+    "render-build": "npm install --prefix frontend && npm run build --prefix frontend && npm install --prefix backend",
+    "build": "npm run render-build",
+    "start": "node backend/server.js",
+    "server": "npm start --prefix backend",
+    "client": "npm run dev --prefix frontend"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "disaster-response",
+    "emergency-management",
+    "public-service",
+    "resq-grid"
+  ],
+  "author": "RESQ-GRID Team",
+  "license": "ISC"
+}
