@@ -13,10 +13,10 @@ export const ReportProblem = () => {
 
   // Form State
   const [description, setDescription] = useState('');
-  const [address, setAddress] = useState(user?.address || 'Main Commercial Road & 4th Cross, Indiranagar');
-  const [affectedPeople, setAffectedPeople] = useState(25);
-  const [immediateDanger, setImmediateDanger] = useState(true);
-  const [severityHint, setSeverityHint] = useState('HIGH');
+  const [address, setAddress] = useState(user?.address || '');
+  const [affectedPeople, setAffectedPeople] = useState(1);
+  const [immediateDanger, setImmediateDanger] = useState(false);
+  const [severityHint, setSeverityHint] = useState('MEDIUM');
   const [imageUrl, setImageUrl] = useState('');
 
   // Triage / Analysis Screen State
@@ -35,23 +35,6 @@ export const ReportProblem = () => {
     'Calculating multi-factor dynamic priority scores',
     'Analyzing structural dependencies & sequence constraints'
   ];
-
-  // Quick Demo Preset Fillers
-  const fillScenarioNormal = () => {
-    setDescription('There is a damaged electrical pole near my street. The drainage is blocked, water is accumulating on the road, the road is damaged and vehicles cannot cross.');
-    setAddress('Main Commercial Road & 4th Cross, Indiranagar');
-    setAffectedPeople(45);
-    setImmediateDanger(true);
-    setSeverityHint('HIGH');
-  };
-
-  const fillScenarioDisaster = () => {
-    setDescription('Earthquake hit our sector: building partially collapsed, people trapped under rubble, 5 individuals injured and bleeding, active ground floor gas fire, and road blocked by heavy concrete debris.');
-    setAddress('Sector 4 Commercial Plaza, East District');
-    setAffectedPeople(120);
-    setImmediateDanger(true);
-    setSeverityHint('CRITICAL');
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -223,28 +206,6 @@ export const ReportProblem = () => {
       ) : (
         /* Report Form */
         <div className="bg-white border border-slate-200 rounded-md p-6 shadow-sm">
-          {/* Preset Buttons for Easy Hackathon Demo Testing */}
-          <div className="mb-6 p-3 bg-slate-50 border border-slate-200 rounded text-xs">
-            <span className="font-semibold text-slate-700 block mb-2">
-              Demo Presets (1-Click Fillers):
-            </span>
-            <div className="flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={fillScenarioNormal}
-                className="px-3 py-1.5 bg-white border border-slate-300 hover:border-blue-600 hover:text-blue-700 rounded text-slate-700 font-medium transition-colors"
-              >
-                Fill Demo Case RG-1042 (Electrical + Drainage + Road + Traffic)
-              </button>
-              <button
-                type="button"
-                onClick={fillScenarioDisaster}
-                className="px-3 py-1.5 bg-white border border-slate-300 hover:border-red-600 hover:text-red-700 rounded text-slate-700 font-medium transition-colors"
-              >
-                Fill Earthquake Disaster Report (Search & Rescue, Medical, Fire)
-              </button>
-            </div>
-          </div>
 
           {error && (
             <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded">

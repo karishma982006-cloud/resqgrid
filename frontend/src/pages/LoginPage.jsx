@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { User, HardHat, Shield, KeyRound, AlertCircle, Zap, Droplets, Car, Flame, HeartPulse, Radio, Lock } from 'lucide-react';
+import { User, HardHat, Shield, AlertCircle } from 'lucide-react';
 
 export const LoginPage = () => {
   // activeTab: 'customer' | 'department' | 'admin'
@@ -11,7 +11,7 @@ export const LoginPage = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const { login, demoLogin } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleTabChange = (tab) => {
@@ -31,19 +31,6 @@ export const LoginPage = () => {
       redirectUser(user);
     } catch (err) {
       setError(err.message || 'Login failed. Please check your credentials.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleQuickDemo = async (role, departmentCode = null) => {
-    setError('');
-    setLoading(true);
-    try {
-      const user = await demoLogin(role, departmentCode);
-      redirectUser(user);
-    } catch (err) {
-      setError(err.message || 'Demo login failed.');
     } finally {
       setLoading(false);
     }
@@ -129,43 +116,6 @@ export const LoginPage = () => {
               </p>
             </div>
 
-            {/* Quick 1-Click Demo Buttons for Customer */}
-            <div className="p-3 bg-slate-50 border border-slate-200 rounded text-xs space-y-2">
-              <div className="flex items-center justify-between text-[11px] text-slate-500 font-medium">
-                <span className="flex items-center gap-1">
-                  <KeyRound className="w-3 h-3 text-blue-700" /> 1-Click Demo Customer Logins:
-                </span>
-                <span className="font-mono text-[10px]">pwd: password123</span>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <button
-                  type="button"
-                  onClick={() => handleQuickDemo('citizen')}
-                  disabled={loading}
-                  className="p-2 bg-white border border-slate-200 hover:border-blue-600 rounded text-left transition-colors flex items-center gap-2"
-                >
-                  <User className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-slate-900">Rohan Sharma (Citizen 1)</div>
-                    <div className="text-[10px] text-slate-500">citizen@resqgrid.demo</div>
-                  </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => handleQuickDemo('citizen')}
-                  disabled={loading}
-                  className="p-2 bg-white border border-slate-200 hover:border-blue-600 rounded text-left transition-colors flex items-center gap-2"
-                >
-                  <User className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-slate-900">Ananya Verma (Citizen 2)</div>
-                    <div className="text-[10px] text-slate-500">citizen2@resqgrid.demo</div>
-                  </div>
-                </button>
-              </div>
-            </div>
-
             {error && (
               <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded flex items-center gap-2">
                 <AlertCircle className="w-4 h-4 flex-shrink-0" />
@@ -184,7 +134,7 @@ export const LoginPage = () => {
                   required
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
-                  placeholder="e.g. citizen@resqgrid.demo or +91 98765 43210"
+                  placeholder="e.g. yourname@example.com or phone number"
                   className="w-full px-3 py-2 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-600 outline-none"
                 />
               </div>
@@ -234,95 +184,6 @@ export const LoginPage = () => {
               </p>
             </div>
 
-            {/* Quick 1-Click Agency Selectors */}
-            <div className="p-3 bg-slate-50 border border-slate-200 rounded text-xs space-y-2">
-              <div className="flex items-center justify-between text-[11px] text-slate-500 font-medium">
-                <span className="flex items-center gap-1">
-                  <KeyRound className="w-3 h-3 text-amber-700" /> 1-Click Department Selectors:
-                </span>
-                <span className="font-mono text-[10px]">pwd: password123</span>
-              </div>
-              <div className="grid grid-cols-2 gap-2 text-[11px]">
-                <button
-                  type="button"
-                  onClick={() => handleQuickDemo('department', 'ELECTRICITY')}
-                  disabled={loading}
-                  className="p-2 bg-white border border-slate-200 hover:border-amber-600 rounded text-left transition-colors flex items-center gap-1.5"
-                >
-                  <Zap className="w-3.5 h-3.5 text-amber-600 flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-slate-900">Electricity</div>
-                    <div className="text-[10px] text-slate-500 font-mono">ELECTRICITY</div>
-                  </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => handleQuickDemo('department', 'PWD')}
-                  disabled={loading}
-                  className="p-2 bg-white border border-slate-200 hover:border-orange-600 rounded text-left transition-colors flex items-center gap-1.5"
-                >
-                  <HardHat className="w-3.5 h-3.5 text-orange-600 flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-slate-900">PWD / Road</div>
-                    <div className="text-[10px] text-slate-500 font-mono">PWD</div>
-                  </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => handleQuickDemo('department', 'DRAINAGE')}
-                  disabled={loading}
-                  className="p-2 bg-white border border-slate-200 hover:border-sky-600 rounded text-left transition-colors flex items-center gap-1.5"
-                >
-                  <Droplets className="w-3.5 h-3.5 text-sky-600 flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-slate-900">Drainage</div>
-                    <div className="text-[10px] text-slate-500 font-mono">DRAINAGE</div>
-                  </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => handleQuickDemo('department', 'TRAFFIC')}
-                  disabled={loading}
-                  className="p-2 bg-white border border-slate-200 hover:border-indigo-600 rounded text-left transition-colors flex items-center gap-1.5"
-                >
-                  <Car className="w-3.5 h-3.5 text-indigo-600 flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-slate-900">Traffic</div>
-                    <div className="text-[10px] text-slate-500 font-mono">TRAFFIC</div>
-                  </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => handleQuickDemo('department', 'FIRE_RESCUE')}
-                  disabled={loading}
-                  className="p-2 bg-white border border-slate-200 hover:border-red-600 rounded text-left transition-colors flex items-center gap-1.5"
-                >
-                  <Flame className="w-3.5 h-3.5 text-red-600 flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-slate-900">Fire & Rescue</div>
-                    <div className="text-[10px] text-slate-500 font-mono">FIRE_RESCUE</div>
-                  </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => handleQuickDemo('department', 'MEDICAL')}
-                  disabled={loading}
-                  className="p-2 bg-white border border-slate-200 hover:border-emerald-600 rounded text-left transition-colors flex items-center gap-1.5"
-                >
-                  <HeartPulse className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-slate-900">Medical</div>
-                    <div className="text-[10px] text-slate-500 font-mono">MEDICAL</div>
-                  </div>
-                </button>
-              </div>
-            </div>
-
             {error && (
               <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded flex items-center gap-2">
                 <AlertCircle className="w-4 h-4 flex-shrink-0" />
@@ -341,7 +202,7 @@ export const LoginPage = () => {
                   required
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
-                  placeholder="e.g. ELECTRICITY or electricity@resqgrid.demo"
+                  placeholder="e.g. ELECTRICITY, PWD, or dispatch email"
                   className="w-full px-3 py-2 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-amber-600 outline-none"
                 />
               </div>
@@ -384,43 +245,6 @@ export const LoginPage = () => {
               </p>
             </div>
 
-            {/* Quick 1-Click Selectors for Command/Admin */}
-            <div className="p-3 bg-slate-50 border border-slate-200 rounded text-xs space-y-2">
-              <div className="flex items-center justify-between text-[11px] text-slate-500 font-medium">
-                <span className="flex items-center gap-1">
-                  <KeyRound className="w-3 h-3 text-red-700" /> 1-Click Administrative Access:
-                </span>
-                <span className="font-mono text-[10px]">pwd: password123</span>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <button
-                  type="button"
-                  onClick={() => handleQuickDemo('command_center')}
-                  disabled={loading}
-                  className="p-2.5 bg-white border border-slate-200 hover:border-red-600 rounded text-left transition-colors flex items-center gap-2"
-                >
-                  <Radio className="w-4 h-4 text-red-600 flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-slate-900">Command Center Officer</div>
-                    <div className="text-[10px] text-slate-500">command@resqgrid.demo</div>
-                  </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => handleQuickDemo('admin')}
-                  disabled={loading}
-                  className="p-2.5 bg-white border border-slate-200 hover:border-slate-800 rounded text-left transition-colors flex items-center gap-2"
-                >
-                  <Lock className="w-4 h-4 text-slate-700 flex-shrink-0" />
-                  <div>
-                    <div className="font-semibold text-slate-900">System Administrator</div>
-                    <div className="text-[10px] text-slate-500">admin@resqgrid.demo</div>
-                  </div>
-                </button>
-              </div>
-            </div>
-
             {error && (
               <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded flex items-center gap-2">
                 <AlertCircle className="w-4 h-4 flex-shrink-0" />
@@ -439,7 +263,7 @@ export const LoginPage = () => {
                   required
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
-                  placeholder="e.g. command@resqgrid.demo or admin@resqgrid.demo"
+                  placeholder="e.g. username or official email"
                   className="w-full px-3 py-2 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-red-600 outline-none"
                 />
               </div>

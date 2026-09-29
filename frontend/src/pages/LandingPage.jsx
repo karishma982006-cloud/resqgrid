@@ -100,8 +100,8 @@ export const LandingPage = () => {
       <section className="bg-slate-100 border-t border-b border-slate-200 py-14 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
-            <h3 className="text-xl font-bold text-slate-900">Pre-Configured Hackathon Demo Scenarios</h3>
-            <p className="text-xs text-slate-600 mt-1">Live data ready for immediate testing and demonstration.</p>
+            <h3 className="text-xl font-bold text-slate-900">Multi-Agency Operational Scenarios</h3>
+            <p className="text-xs text-slate-600 mt-1">Cross-department workflows for municipal maintenance and disaster coordination.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -195,7 +195,7 @@ export const LandingPage = () => {
             <strong className="text-slate-700 font-semibold">RESQ-GRID</strong> — Unified Public Service & Disaster Coordination Platform
           </div>
           <div>
-            Local Demo Environment • Built for Hackathon Demonstration
+            Enterprise Municipal Platform • Live Operations Engine
           </div>
         </div>
       </footer>
