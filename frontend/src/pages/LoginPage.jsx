@@ -49,8 +49,8 @@ export const LoginPage = () => {
       setIdentifier('ELECTRICITY');
       setPassword('password123');
     } else if (tab === 'customer') {
-      setIdentifier('citizen@resqgrid.demo');
-      setPassword('password123');
+      setIdentifier('');
+      setPassword('');
     } else if (tab === 'admin') {
       setIdentifier('command@resqgrid.demo');
       setPassword('password123');
@@ -159,52 +159,6 @@ export const LoginPage = () => {
               </p>
             </div>
 
-            {/* Quick Citizen Account Selectors */}
-            <div>
-              <label className="block text-[11px] font-semibold text-slate-600 mb-1.5">
-                Choose Customer Account (or enter below):
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIdentifier('citizen@resqgrid.demo');
-                    setPassword('password123');
-                  }}
-                  className={`p-2 rounded border text-left text-xs transition-all flex items-center gap-2 ${
-                    identifier === 'citizen@resqgrid.demo'
-                      ? 'border-blue-600 bg-blue-50/70 text-blue-900 font-semibold'
-                      : 'border-slate-200 bg-white hover:border-slate-300 text-slate-700'
-                  }`}
-                >
-                  <User className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
-                  <div className="overflow-hidden">
-                    <div className="font-semibold text-xs truncate">Rohan Sharma</div>
-                    <div className="text-[10px] text-slate-500 font-mono truncate">citizen@resqgrid.demo</div>
-                  </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIdentifier('citizen2@resqgrid.demo');
-                    setPassword('password123');
-                  }}
-                  className={`p-2 rounded border text-left text-xs transition-all flex items-center gap-2 ${
-                    identifier === 'citizen2@resqgrid.demo'
-                      ? 'border-blue-600 bg-blue-50/70 text-blue-900 font-semibold'
-                      : 'border-slate-200 bg-white hover:border-slate-300 text-slate-700'
-                  }`}
-                >
-                  <User className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
-                  <div className="overflow-hidden">
-                    <div className="font-semibold text-xs truncate">Ananya Verma</div>
-                    <div className="text-[10px] text-slate-500 font-mono truncate">citizen2@resqgrid.demo</div>
-                  </div>
-                </button>
-              </div>
-            </div>
-
             {error && (
               <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded flex items-center gap-2">
                 <AlertCircle className="w-4 h-4 flex-shrink-0" />
@@ -223,7 +177,7 @@ export const LoginPage = () => {
                   required
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
-                  placeholder="e.g. citizen@resqgrid.demo or phone number"
+                  placeholder="e.g. yourname@example.com or phone number"
                   className="w-full px-3 py-2 border border-slate-300 rounded text-xs focus:ring-1 focus:ring-blue-600 outline-none"
                 />
               </div>
