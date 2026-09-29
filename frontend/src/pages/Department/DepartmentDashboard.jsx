@@ -78,7 +78,7 @@ export const DepartmentDashboard = () => {
             <AlertTriangle className="w-5 h-5 animate-pulse text-amber-300 flex-shrink-0" />
             <div>
               <div className="font-bold text-sm tracking-wide">
-                🚨 EMERGENCY DISASTER PROTOCOL ENGAGED: {activeDisaster?.title || 'Earthquake EQ-2026-001'}
+                🚨 EMERGENCY DISASTER PROTOCOL ENGAGED: DISASTER MODE ACTIVE
               </div>
               <div className="text-red-100 text-xs font-normal mt-0.5">
                 Command Center has declared disaster operations. Priority multiplier applied. Department crews must prioritize life-safety emergencies.
@@ -114,7 +114,7 @@ export const DepartmentDashboard = () => {
             </div>
             <p className="mt-1 text-slate-700 text-xs">
               {isDisasterMode
-                ? `Emergency declared for ${activeDisaster?.title || 'Earthquake EQ-2026-001'}. Critical life-safety work orders are prioritized at the top of your queue.`
+                ? 'Emergency disaster protocol is active. Critical life-safety work orders are prioritized at the top of your queue.'
                 : 'Routine municipal maintenance and service response queue. Tasks are prioritized by standard department safety impact.'}
             </p>
           </div>

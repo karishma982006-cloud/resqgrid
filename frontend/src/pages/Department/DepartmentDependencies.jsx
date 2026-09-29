@@ -58,7 +58,7 @@ export const DepartmentDependencies = () => {
             <AlertTriangle className="w-5 h-5 animate-pulse text-amber-300 flex-shrink-0" />
             <div>
               <div className="font-bold text-sm tracking-wide">
-                🚨 DISASTER PROTOCOL ACTIVE — {activeDisaster?.disasterCode || 'EQ-2026-001'}
+                🚨 DISASTER PROTOCOL ACTIVE
               </div>
               <div className="text-red-100 text-xs font-normal mt-0.5">
                 Upstream safety dependencies (gas/electrical isolation, debris removal) must be cleared immediately.

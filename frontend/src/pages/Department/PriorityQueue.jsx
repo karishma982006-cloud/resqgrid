@@ -46,7 +46,7 @@ export const PriorityQueue = () => {
             <AlertTriangle className="w-5 h-5 animate-pulse text-amber-300 flex-shrink-0" />
             <div>
               <div className="font-bold text-sm tracking-wide">
-                🚨 DISASTER PROTOCOL ACTIVE — {activeDisaster?.disasterCode || 'EQ-2026-001'}: {activeDisaster?.title || 'Emergency Operations Active'}
+                🚨 DISASTER PROTOCOL ACTIVE
               </div>
               <div className="text-red-100 text-xs font-normal mt-0.5">
                 Frontline squads must prioritize life-safety work orders. Non-critical tasks are temporarily deprioritized.

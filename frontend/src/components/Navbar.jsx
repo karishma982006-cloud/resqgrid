@@ -25,7 +25,7 @@ export const Navbar = () => {
         <div className="bg-red-700 text-white px-4 py-1.5 text-xs font-semibold flex items-center justify-between">
           <div className="flex items-center gap-2 max-w-5xl mx-auto w-full">
             <AlertTriangle className="w-4 h-4 animate-pulse text-amber-300" />
-            <span>DISASTER MODE: ACTIVE — {activeDisaster?.disasterCode || 'EQ-2026-001'}: {activeDisaster?.title || 'Emergency Operations Active'}</span>
+            <span>DISASTER MODE IS IN ACTIVE STATE</span>
             {(user.role === 'command_center' || user.role === 'admin') && (
               <Link
                 to="/command/disaster"

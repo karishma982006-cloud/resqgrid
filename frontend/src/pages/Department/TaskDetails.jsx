@@ -214,7 +214,7 @@ export const TaskDetails = () => {
             <AlertTriangle className="w-5 h-5 animate-pulse text-amber-300 flex-shrink-0" />
             <div>
               <div className="font-bold text-sm tracking-wide">
-                🚨 EMERGENCY DISASTER WORK ORDER — {activeDisaster?.disasterCode || 'EQ-2026-001'}
+                🚨 EMERGENCY DISASTER WORK ORDER — DISASTER PROTOCOL ACTIVE
               </div>
               <div className="text-red-100 text-xs font-normal mt-0.5">
                 Frontline unit must expedite dispatch and update arrival notes. Life-safety response protocol in effect.

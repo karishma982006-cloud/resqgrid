@@ -273,7 +273,7 @@ export const ReportProblem = () => {
         <div className="p-3 bg-red-50 border border-red-200 rounded-md text-red-800 text-xs mb-6 flex items-center gap-2">
           <AlertTriangle className="w-4 h-4 text-red-600 flex-shrink-0" />
           <span>
-            <strong>ACTIVE DISASTER MODE:</strong> This report will be prioritized under emergency disaster operations ({activeDisaster?.disasterCode || 'EQ-2026-001'}).
+            <strong>ACTIVE DISASTER MODE:</strong> This report will be prioritized under emergency disaster operations.
           </span>
         </div>
       )}
